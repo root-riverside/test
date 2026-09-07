@@ -40,7 +40,7 @@
     <section class="panel methodology">
       <h2>해석 방법</h2>
       <p><b>추세</b>는 종가가 20일·60일 평균 위에 있는지, <b>모멘텀</b>은 최근 20거래일 수익률, <b>위험</b>은 최근 60거래일 변동성으로 판단합니다. 향후 범위는 최근 60거래일의 일간 수익률을 연장한 통계적 추정치입니다.</p>
-      <p>데이터는 Yahoo Finance의 공개 차트 응답을 브라우저에서 조회합니다. 응답 지연·정정·중단 가능성이 있으므로 실제 거래 전에는 증권사 시세를 확인하세요.</p>
+      <p>GitHub Actions가 매일 장 마감 뒤 Yahoo Finance의 공개 차트 응답에서 종가를 저장합니다. 응답 지연·정정·중단 가능성이 있으므로 실제 거래 전에는 증권사 시세를 확인하세요.</p>
     </section>
   </main>
   <template id="holding-row"><tr><td><select class="asset"></select></td><td><input class="quantity" type="number" min="0" step="any" placeholder="0" /></td><td><input class="cost" type="number" min="0" step="any" placeholder="원화 기준" /></td><td class="latest">—</td><td class="pnl">—</td><td><button class="delete" aria-label="삭제">×</button></td></tr></template>
