@@ -1,0 +1,27 @@
+name: Update daily close data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * 1-5'
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Download completed daily closes
+        run: node scripts/update-market-data.mjs
+      - name: Commit updated data when changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/market.json
+          git diff --cached --quiet || git commit -m "chore: update daily close data"
+          git push
