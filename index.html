@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이 마켓 나침반</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">DAILY CLOSE · PERSONAL PORTFOLIO</p>
+      <h1>마이 마켓 나침반</h1>
+      <p class="intro">확정 종가로 최근 흐름과 보유자산의 시나리오를 살펴봅니다.</p>
+      <div class="header-actions"><span id="data-status" class="status">데이터를 불러오는 중…</span><button id="refresh" class="secondary">종가 새로고침</button></div>
+    </header>
+
+    <section class="summary-grid" aria-label="포트폴리오 요약">
+      <article><span>총 평가액</span><strong id="total-value">—</strong><small>입력한 보유자산 기준</small></article>
+      <article><span>총 평가손익</span><strong id="total-pnl">—</strong><small id="total-return">—</small></article>
+      <article><span>오늘의 시장 온도</span><strong id="market-regime">—</strong><small id="market-detail">종가 분석 후 표시</small></article>
+    </section>
+
+    <section class="panel holdings-panel">
+      <div class="section-heading"><div><p class="eyebrow">MY HOLDINGS</p><h2>보유자산</h2></div><button id="add-holding">보유자산 추가</button></div>
+      <p class="hint">수량과 평균 매수가를 입력하세요. 정보는 이 브라우저에만 저장됩니다.</p>
+      <div class="table-wrap"><table><thead><tr><th>자산</th><th>수량</th><th>평균 매수가</th><th>최근 종가</th><th>평가손익</th><th></th></tr></thead><tbody id="holdings"></tbody></table></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">MARKET PULSE</p><h2>종가 기반 최근 흐름</h2></div><p class="hint">최근 1년 일봉 · 20/60일 이동평균</p></div>
+      <div id="markets" class="market-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">OUTLOOK</p><h2>향후 1개월 참고 시나리오</h2></div><p class="hint">과거 수익률과 변동성으로 계산한 범위이며 예측·투자권유가 아닙니다.</p></div>
+      <div id="outlooks" class="outlook-grid"></div>
+    </section>
+
+    <section class="panel methodology">
+      <h2>해석 방법</h2>
+      <p><b>추세</b>는 종가가 20일·60일 평균 위에 있는지, <b>모멘텀</b>은 최근 20거래일 수익률, <b>위험</b>은 최근 60거래일 변동성으로 판단합니다. 향후 범위는 최근 60거래일의 일간 수익률을 연장한 통계적 추정치입니다.</p>
+      <p>데이터는 Yahoo Finance의 공개 차트 응답을 브라우저에서 조회합니다. 응답 지연·정정·중단 가능성이 있으므로 실제 거래 전에는 증권사 시세를 확인하세요.</p>
+    </section>
+  </main>
+  <template id="holding-row"><tr><td><select class="asset"></select></td><td><input class="quantity" type="number" min="0" step="any" placeholder="0" /></td><td><input class="cost" type="number" min="0" step="any" placeholder="원화 기준" /></td><td class="latest">—</td><td class="pnl">—</td><td><button class="delete" aria-label="삭제">×</button></td></tr></template>
+  <script src="app.js"></script>
+</body>
+</html>
